@@ -19,8 +19,9 @@ export default class Home extends Component {
                             <Link to="/randomBeer">Random Beer</Link>
                         </li>
                         <li>
-                            <Link to="/newBeer">RandomNew Beer</Link>
+                            <Link to="/newBeer">Random new Beer</Link>
                         </li>
+                       
                     </ul>
                 </nav>
             </div>

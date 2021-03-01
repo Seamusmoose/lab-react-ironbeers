@@ -8,7 +8,7 @@ class Beers extends React.Component {
     componentDidMount() {
         axios.get('https://ih-beers-api2.herokuapp.com/beers')
         .then(response =>{
-            console.log(response); 
+            /* console.log(response);  */
             this.setState({
                 beers: response.data
             })
@@ -22,10 +22,13 @@ class Beers extends React.Component {
         const beers = this.state.beers.map(beer =>{
             return(
                 <div>
-                    <img style={{width:'50px'}}src={beer.image_url} alt={beer.name}/>
+                     <Link to={`/beers/${beer._id}`}>
+                        <img style={{width:'50px'}}src={beer.image_url} alt={beer.name} />
+                     </Link>
                     <h2>{beer.name}</h2>
                     <p>{beer.tagline}</p>
                     <p>{beer.contributed_by}</p>
+                    
                 </div>
             )
         })
@@ -34,7 +37,7 @@ class Beers extends React.Component {
                 <h1>Beers</h1>
                 {/* //<h2>{this.state.beers.name}</h2> */}
                 {beers}
-                <Link to="/beers/:beerId">Show Details</Link>
+                
             </div>
         )
     }
