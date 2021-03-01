@@ -1,10 +1,20 @@
-import axios from 'axios';
+ import axios from 'axios';
 import React from 'react';
+import Search from './Search'
 import {Link} from 'react-router-dom'; 
+
 class Beers extends React.Component {
     state = {
-        beers: []
+        beers: [],
+        query: ''
     }
+
+    setQuery = query => {
+        this.setState({
+          query: query
+        });
+      };
+
     componentDidMount() {
         axios.get('https://ih-beers-api2.herokuapp.com/beers')
         .then(response =>{
@@ -34,8 +44,12 @@ class Beers extends React.Component {
         })
         return (
             <div>
-                <h1>Beers</h1>
-                {/* //<h2>{this.state.beers.name}</h2> */}
+                <h1>Beers</h1> 
+                <Search setQuery={this.setQuery} query={this.state.query} />
+                {/* <button onClick={this.searchedItem}> */}
+                    {/* Search
+                    </button> */}
+                
                 {beers}
                 
             </div>

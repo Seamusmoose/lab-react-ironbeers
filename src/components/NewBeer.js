@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-
+import axios from 'axios'
 export default class NewBeer extends Component {
     constructor(props) {
      super(props)  
      
-     this.state = {
+     this.state = { 
         name: '',
         tagline: '',
         description: '',
@@ -23,8 +23,22 @@ export default class NewBeer extends Component {
             [name]: value
         });
     }
+    
+    handleSubmit = event => {
+        // const {name, value } = event.target;
+            event.preventDefault()
+            console.log(this.state)
+            axios.post('https://ih-beers-api2.herokuapp.com/beers/new', this.state)
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
 
     render(){
+        const {name, tagline, description, first_brewed, brewers_tips, attenuation_level, contribution_by} = this.state
         return (
             <div>
                 <h1>New Beer</h1>

@@ -8,6 +8,7 @@ import Beers from './components/Beers';
 import RandomBeer from './components/RandomBeer';
 import NewBeer from './components/NewBeer';
 import DetailsBeer from './components/DetailsBeer';
+import Search from './components/Search'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route exact path='/beers' component={Beers}/>
         <Route exact path='/randombeer' component={RandomBeer}/>
         <Route exact path='/newbeer' component={NewBeer}/>
+        <Route exact path='/search' component={Search}/>
         <Route exact path='/beers/:id' component={DetailsBeer}/>
       </Switch>
         
